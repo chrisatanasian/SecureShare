@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Post, type: :model do
+RSpec.describe Post do
   fixtures :posts
 
   context "callbacks" do

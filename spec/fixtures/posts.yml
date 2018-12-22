@@ -2,16 +2,16 @@ one:
   content: MyString
   view_count: 0
   max_view_count: 1
-  slug: MyString
+  slug: 48f59d502cd256e2a405435b296d7f13
 
 two:
   content: MyString2
   view_count: 0
   max_view_count: 2
-  slug: MyString2
+  slug: 2403ffcc8dab987642f8b99036b0bd8d
 
 three:
   content: MyString3
   view_count: 0
   max_view_count: 10
-  slug: MyString3
+  slug: 9c26164af3c44efc26342266745c8754
