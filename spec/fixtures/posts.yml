@@ -1,0 +1,11 @@
+one:
+  content: MyString
+  view_count: 1
+  max_view_count: 1
+  slug: MyString
+
+two:
+  content: MyString
+  view_count: 1
+  max_view_count: 1
+  slug: MyString
