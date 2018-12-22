@@ -1,11 +1,17 @@
 one:
   content: MyString
-  view_count: 1
+  view_count: 0
   max_view_count: 1
   slug: MyString
 
 two:
-  content: MyString
-  view_count: 1
-  max_view_count: 1
-  slug: MyString
+  content: MyString2
+  view_count: 0
+  max_view_count: 2
+  slug: MyString2
+
+three:
+  content: MyString3
+  view_count: 0
+  max_view_count: 10
+  slug: MyString3
