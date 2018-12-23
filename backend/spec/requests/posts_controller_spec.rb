@@ -39,4 +39,11 @@ RSpec.describe PostsController do
 
     expect(Post.find_by(id: @post.id)).to eq(nil)
   end
+
+  it "should not error out when viewing a nonexisting post" do
+      get "/posts/#{@post.slug}", as: :json # deletes the post
+      get "/posts/#{@post.slug}", as: :json
+
+      expect(JSON.parse(response.body)).to eq(nil)
+  end
 end

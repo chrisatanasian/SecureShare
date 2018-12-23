@@ -5,8 +5,10 @@ class PostsController < ApplicationController
   def show
     render json: @post
 
-    view_count = @post.view_count
-    @post.update!(view_count: view_count + 1)
+    if @post
+      view_count = @post.view_count
+      @post.update!(view_count: view_count + 1)
+    end
   end
 
   # POST /posts
