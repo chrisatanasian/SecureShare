@@ -13,6 +13,23 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2vh;
+}
+
+.input {
+  margin-top: 2vh;
+  width: 50%;
+  resize: none;
+  height: 10vh;
+}
+
+.submit {
+  border: none;
+  text-align: center;
+  padding: 12px 24px;
+  cursor: pointer;
 }
