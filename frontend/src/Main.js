@@ -65,21 +65,19 @@ class Main extends Component {
 
     return (
       <div className="Main">
-        <header className="Main-header">
-          <h1>
-            SecureShare
-          </h1>
+        <h1>
+          SecureShare
+        </h1>
 
-          <label className="label">
-            Enter your content to be securely shared:
-          </label>
-          <textarea className="input" type="text" name="content" value={content} onChange={this.updateContent} />
-          <button type="button" className="submit" onClick={this.submitPost}>
-            Submit
-          </button>
+        <label className="label">
+          Enter your content to be securely shared:
+        </label>
+        <textarea className="input" type="text" name="content" value={content} onChange={this.updateContent} />
+        <button type="button" className="submit" onClick={this.submitPost}>
+          Submit
+        </button>
 
-          {this.urlText()}
-        </header>
+        {this.urlText()}
       </div>
     );
   }
