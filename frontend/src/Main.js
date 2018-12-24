@@ -8,6 +8,10 @@ class Main extends Component {
     this.state = { content: '', slug: '', copied: false };
   }
 
+  componentDidMount() {
+    this.input.focus();
+  }
+
   serverUrl() {
     const node_env = process.env.NODE_ENV;
     if (!node_env || node_env === 'development') {
@@ -80,7 +84,12 @@ class Main extends Component {
         <label className="label">
           Enter your content to be securely shared:
         </label>
-        <textarea className="input" type="text" name="content" value={content} onChange={this.updateContent} />
+        <textarea className="input"
+                  type="text"
+                  name="content"
+                  value={content}
+                  onChange={this.updateContent}
+                  ref={(input) => { this.input = input; }}/>
         <button type="button" className="submit" onClick={this.submitPost}>
           Submit
         </button>
