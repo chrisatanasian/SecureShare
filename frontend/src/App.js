@@ -57,11 +57,11 @@ class App extends Component {
     const url = this.url();
 
     return slug ? (
-      <h1>
+      <h3>
         Your secure URL:
         <br />
         <a href={url}>{url}</a>
-      </h1>
+      </h3>
     ) : null;
   }
 
