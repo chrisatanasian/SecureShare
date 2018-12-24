@@ -7,8 +7,26 @@ class App extends Component {
     this.state = { content: '', slug: '' };
   }
 
+  serverUrl() {
+    const node_env = process.env.NODE_ENV;
+    if (!node_env || node_env === 'development') {
+      return 'http://localhost:4000';
+    } else {
+      throw new Error(`Server url not defined for environment ${node_env}`);
+    }
+  }
+
+  clientUrl() {
+    const node_env = process.env.NODE_ENV;
+    if (!node_env || node_env === 'development') {
+      return 'http://localhost:3000';
+    } else {
+      throw new Error(`Client url not defined for environment ${node_env}`);
+    }
+  }
+
   submitPost = () => {
-    fetch('http://localhost:4000/posts/', {
+    fetch(`${this.serverUrl()}/posts`, {
       method: 'POST',
       headers: new Headers({
         'content-type': 'application/json',
@@ -31,7 +49,7 @@ class App extends Component {
   url() {
     const { slug } = this.state;
 
-    return `http://localhost:3000/${slug}`;
+    return `${this.clientUrl()}/${slug}`;
   }
 
   urlText() {
