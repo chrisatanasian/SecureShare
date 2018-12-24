@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import './Main.css';
 
 class Main extends Component {
   constructor(props) {
     super(props);
-    this.state = { content: '', slug: '' };
+    this.state = { content: '', slug: '', copied: false };
   }
 
   serverUrl() {
@@ -48,15 +49,22 @@ class Main extends Component {
   }
 
   urlText() {
-    const { slug } = this.state;
+    const { slug, copied } = this.state;
     const url = this.url();
 
     return slug ? (
-      <h3>
-        Your secure URL:
-        <br />
-        <a href={url}>{url}</a>
-      </h3>
+      <React.Fragment>
+        <h3>
+          Your secure URL:
+          <br />
+          <a href={url}>{url}</a>
+        </h3>
+        <CopyToClipboard text={url} onCopy={() => this.setState({ copied: true })}>
+          <button>Copy to Clipboard</button>
+
+        </CopyToClipboard>
+        {copied ? <span className="copied">Copied.</span> : null}
+      </React.Fragment>
     ) : null;
   }
 
