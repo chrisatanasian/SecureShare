@@ -4,7 +4,7 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { content: '' };
+    this.state = { content: '', slug: '' };
   }
 
   submitPost = () => {
@@ -17,7 +17,7 @@ class App extends Component {
     })
       .then(response => response.json())
       .then((responseData) => {
-        console.log(responseData);
+        this.setState({ slug: responseData.slug });
       })
       .catch((e) => {
         console.log(e);
@@ -28,20 +28,44 @@ class App extends Component {
     this.setState({ content: event.target.value });
   }
 
+  url() {
+    const { slug } = this.state;
+
+    return `http://localhost:3000/${slug}`;
+  }
+
+  urlText() {
+    const { slug } = this.state;
+    const url = this.url();
+
+    return slug ? (
+      <h1>
+        Your secure URL:
+        <br />
+        <a href={url}>{url}</a>
+      </h1>
+    ) : null;
+  }
+
   render() {
+    const { content } = this.state;
+
     return (
       <div className="App">
         <header className="App-header">
           <h1>
             SecureShare
           </h1>
+
           <label className="label">
             Enter your content to be securely shared:
           </label>
-          <textarea className="input" type="text" name="content" value={this.state.content} onChange={this.updateContent} />
+          <textarea className="input" type="text" name="content" value={content} onChange={this.updateContent} />
           <button type="button" className="submit" onClick={this.submitPost}>
             Submit
           </button>
+
+          {this.urlText()}
         </header>
       </div>
     );
