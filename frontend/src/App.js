@@ -17,12 +17,7 @@ class App extends Component {
   }
 
   clientUrl() {
-    const node_env = process.env.NODE_ENV;
-    if (!node_env || node_env === 'development') {
-      return 'http://localhost:3000';
-    } else {
-      throw new Error(`Client url not defined for environment ${node_env}`);
-    }
+    return window.location.origin;
   }
 
   submitPost = () => {
