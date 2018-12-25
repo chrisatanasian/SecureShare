@@ -1,6 +1,6 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins Rails.application.config.frontend_url
+    origins ENV['CLIENT_URL'] || Rails.application.config.frontend_url
 
     resource '*',
       headers: :any,
