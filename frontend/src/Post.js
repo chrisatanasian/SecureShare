@@ -11,19 +11,10 @@ class Main extends Component {
     this.loadPost();
   }
 
-  serverUrl() {
-    const node_env = process.env.NODE_ENV;
-    if (!node_env || node_env === 'development') {
-      return 'http://localhost:4000';
-    } else {
-      throw new Error(`Server url not defined for environment ${node_env}`);
-    }
-  }
-
   loadPost = () => {
     const { pathname } = this.props.location;
 
-    fetch(`${this.serverUrl()}/posts${pathname}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/posts${pathname}`, {
       method: 'GET',
       headers: new Headers({
         'content-type': 'application/json',
