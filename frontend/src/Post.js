@@ -41,7 +41,7 @@ class Main extends Component {
         <textarea className="input"
                   type="text"
                   name="content"
-                  readonly="true"
+                  readOnly={true}
                   value={content}
                   onChange={this.updateContent}
                   ref={(input) => { this.input = input; }}/>
