@@ -1,6 +1,8 @@
 class Post < ApplicationRecord
   after_update :destroy_self, if: :should_be_destroyed?
 
+  validates :content, presence: true
+
   private
 
     def destroy_self

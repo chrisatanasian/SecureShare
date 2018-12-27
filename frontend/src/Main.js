@@ -73,7 +73,7 @@ class Main extends Component {
         </h1>
 
         <label className="label">
-          Enter your content to be securely shared:
+          Enter your message for a secure, one-time share:
         </label>
         <textarea className="input"
                   type="text"
@@ -81,7 +81,7 @@ class Main extends Component {
                   value={content}
                   onChange={this.updateContent}
                   ref={(input) => { this.input = input; }}/>
-        <button type="button" className="submit" onClick={this.submitPost}>
+        <button type="button" className="submit" onClick={this.submitPost} disabled={content === ""}>
           Submit
         </button>
 
