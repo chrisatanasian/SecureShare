@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CryptoJS from 'crypto-js';
 import './Main.css';
 
 class Main extends Component {
@@ -23,7 +24,7 @@ class Main extends Component {
       .then(response => response.json())
       .then((responseData) => {
         if (responseData) {
-          this.setState({ 'content': responseData.content });
+          this.setState({ 'content': CryptoJS.AES.decrypt(responseData.content, process.env.REACT_APP_SECRET_KEY).toString(CryptoJS.enc.Utf8) });
         }
       })
       .catch((e) => {

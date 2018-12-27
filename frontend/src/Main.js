@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import CryptoJS from 'crypto-js';
 import './Main.css';
 
 class Main extends Component {
@@ -22,7 +23,7 @@ class Main extends Component {
       headers: new Headers({
         'content-type': 'application/json',
       }),
-      body: JSON.stringify({ content: this.state.content }),
+      body: JSON.stringify({ content: CryptoJS.AES.encrypt(this.state.content, process.env.REACT_APP_SECRET_KEY).toString() }),
     })
       .then(response => response.json())
       .then((responseData) => {
