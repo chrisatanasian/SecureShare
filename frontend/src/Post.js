@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Post.css';
+import './Main.css';
 
 class Main extends Component {
   constructor(props) {
@@ -31,17 +31,27 @@ class Main extends Component {
       });
   }
 
-  render() {
+  message() {
     const { content } = this.state;
 
-    return (
-      <div className="Post">
-        <h1>
-          Your secure content:
-          <br />
-          {content}
-        </h1>
+    return content ? (
+      <React.Fragment>
+        <h2>Your secure message, which will not be retrievable again:</h2>
+        <textarea className="input"
+                  type="text"
+                  name="content"
+                  readonly="true"
+                  value={content}
+                  onChange={this.updateContent}
+                  ref={(input) => { this.input = input; }}/>
+      </React.Fragment>
+    ) : null;
+  }
 
+  render() {
+    return (
+      <div className="Main">
+        {this.message()}
       </div>
     );
   }
