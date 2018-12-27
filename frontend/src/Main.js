@@ -26,7 +26,7 @@ class Main extends Component {
     })
       .then(response => response.json())
       .then((responseData) => {
-        this.setState({ slug: responseData.slug });
+        this.setState({ slug: responseData.slug, copied: false });
       })
       .catch((e) => {
         console.log(e);
